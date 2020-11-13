@@ -15,25 +15,24 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
         # The last element should already be in place
         for j in range(num_elements - i - 1):
             
-            # Select the ordering for the array
-            # Ascending order
-            # Swap elements if second element is greater than first element
-            if   (order == Ordering.ASC):
+            # Ordering preference selection
+            if   (order == Ordering.ASC):  # ASCENDING
                 if (array[j] > array[j + 1]):
+                    # Swap elements if second element is greater than first 
+                    # element
                     array[j], array[j + 1] = array[j + 1], array[j]
                     swapped = True
-
-            # Descending order
-            # Swap elements if second element is smaller than first element
-            elif (order == Ordering.DESC):
+            elif (order == Ordering.DESC): # DESCENDING
                 if (array[j] < array[j + 1]):
+                    # Swap elements if second element is smaller than first 
+                    # element
                     array[j], array[j + 1] = array[j + 1], array[j]
                     swapped = True
-            else:
+            else:                          # INVALID
                 sys.exit("Not valid ordering")
 
-        # In case nothing is swapped, that means that the elements are 
-        # ordered and therefore no further ordering operations are needed
+        # HINT: If nothing is swapped, elements are already ordered. Therefore, 
+        # no further ordering operations are needed
         if not swapped:
             break
 
