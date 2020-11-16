@@ -11,6 +11,11 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
         1) Sub-array sorted subset.
         2) Remaining unsorted sub-array.
 
+        Time Complex:
+            - Best    -> O(n^2)
+            - Average -> O(n^2)
+            - Worst   -> O(n^2)
+        Space Complex (Auxiliary Space): O(1)
     '''
 
     # In every iteration of selection sort, the minimum/maximum element 

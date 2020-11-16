@@ -5,10 +5,14 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
     '''
         Simplest sorting algorithm that works by repeatedly swapping the 
         adjacent elements if they are in wrong order. 
+        Time Complex:
+            - Best    -> O(n)
+            - Average -> O(n^2)
+            - Worst   -> O(n^2)
+        Space Complex (Auxiliary Space): O(1)
     '''
-    num_elements:int = len(array)
-
     # Traverse the array of elements
+    num_elements:int = len(array)
     for i in range(num_elements):
         swapped:bool = False
 
