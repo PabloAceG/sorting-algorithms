@@ -16,7 +16,11 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
             - Average -> O(n^2)
             - Worst   -> O(n^2)
         Space Complex (Auxiliary Space): O(1)
+        Stable: Yes
     '''
+    # Exists the program if the ordering is not valid. 
+    if (order not in [Ordering.ASC, Ordering.DESC]):
+        sys.exit("Not Valid Ordering")
 
     # In every iteration of selection sort, the minimum/maximum element 
     # (depending on ordering) from the unsorted sub-array is picked and moved 
@@ -29,13 +33,11 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
         for j in range(i + 1, len(array)):
             # Ordering preference selection
             if   (order == Ordering.ASC):  # ASCENDING
-                if (array[idx] > array[j]):
+                if (array[idx] > array[j]): 
                     idx = j
             elif (order == Ordering.DESC): # DESCENDING
                 if (array[idx] < array[j]):
                     idx = j
-            else:                          # INVALID
-                sys.exit("Not valid ordering")   
 
         # Swap elements with the first element of the unordered sub-array, 
         # now the last position of the ordered sub-array.

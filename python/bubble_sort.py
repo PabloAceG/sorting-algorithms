@@ -10,7 +10,12 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
             - Average -> O(n^2)
             - Worst   -> O(n^2)
         Space Complex (Auxiliary Space): O(1)
+        Stable: Yes
     '''
+    # Exists the program if the ordering is not valid. 
+    if (order not in [Ordering.ASC, Ordering.DESC]):
+        sys.exit("Not Valid Ordering")
+
     # Traverse the array of elements
     num_elements:int = len(array)
     for i in range(num_elements):
@@ -32,8 +37,6 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
                     # element
                     array[j], array[j + 1] = array[j + 1], array[j]
                     swapped = True
-            else:                          # INVALID
-                sys.exit("Not valid ordering")
 
         # HINT: If nothing is swapped, elements are already ordered. Therefore, 
         # no further ordering operations are needed
