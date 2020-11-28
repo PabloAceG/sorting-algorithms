@@ -1,4 +1,4 @@
-from ordering_enum import Ordering
+from strategy import Ordering
 import sys
 
 def sort(array:list, order:Ordering=Ordering.ASC) -> list:

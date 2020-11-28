@@ -1,4 +1,4 @@
-from ordering_enum import Ordering
+from strategy import Ordering
 import sys
 
 def sort(array:list, order:Ordering=Ordering.ASC) -> list:
@@ -16,7 +16,7 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
             - Average -> O(n^2)
             - Worst   -> O(n^2)
         Space Complex (Auxiliary Space): O(1)
-        Stable: Yes
+        Stable: No
     '''
     # Exists the program if the ordering is not valid. 
     if (order not in [Ordering.ASC, Ordering.DESC]):
