@@ -145,7 +145,11 @@ the median seems like the most optimal approach.
 
 ## When to use it?
 
-When sorting array, it is preferred over Merge sort 
+When sorting array, it is preferred over MergeSort as it does not need as much
+auxiliary space. Both algorithms are recursive, but MergeSort needs O(n).
+
+QuickSort is also tail recursive, therefore tail call optimization can be 
+applied.
 
 ## Selection Sort
 
