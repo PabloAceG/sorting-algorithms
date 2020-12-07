@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Ordering(Enum):
+class Order(Enum):
     ASC  =  1
     DESC = -1
 

@@ -1,26 +1,34 @@
-from strategy import Ordering
+from strategy import Order
 import sys
 
-def sort(array:list, order:Ordering=Ordering.ASC) -> list:
-    '''
-        A sorting algorithm that sorts a given array by finding the minimum 
-        element (with ascending order). It then moves the array to another
-        sub-array containing the ordered subset. That means that two sub-arrays
-        are needed.
-        
-        1) Sub-array sorted subset.
-        2) Remaining unsorted sub-array.
+def sort(array:list, order:Order=Order.ASC) -> list:
+    """Sorts a list using SelectionSort.
 
-        Time Complex:
-            - Best    -> O(n^2)
-            - Average -> O(n^2)
-            - Worst   -> O(n^2)
-        Space Complex (Auxiliary Space): O(1)
-        Stable: No
-    '''
+    A sorting algorithm that sorts a given array by finding the minimum 
+    element (with ascending order). It then moves the array to another
+    sub-array containing the ordered subset. That means that two sub-arrays
+    are needed.
+    
+    1) Sub-array sorted subset.
+    2) Remaining unsorted sub-array.
+
+    Time Complex:
+        - Best    -> O(n^2)
+        - Average -> O(n^2)
+        - Worst   -> O(n^2)
+    Space Complex (Auxiliary Space): O(1)
+    Stable: No
+
+    Args:
+        array (list) -- Elements to order.
+        order (Order) -- Order preference (default ASCending).
+
+    Returns:
+        list: Ordered elements.
+    """
     # Exists the program if the ordering is not valid. 
-    if (order not in [Ordering.ASC, Ordering.DESC]):
-        sys.exit("Not Valid Ordering")
+    if (order not in [Order.ASC, Order.DESC]):
+        sys.exit("Not Valid Ordering Preference")
 
     # In every iteration of selection sort, the minimum/maximum element 
     # (depending on ordering) from the unsorted sub-array is picked and moved 
@@ -32,10 +40,10 @@ def sort(array:list, order:Ordering=Ordering.ASC) -> list:
         # unordered array.
         for j in range(i + 1, len(array)):
             # Ordering preference selection
-            if   (order == Ordering.ASC):  # ASCENDING
+            if   (order == Order.ASC):  # ASCENDING
                 if (array[idx] > array[j]): 
                     idx = j
-            elif (order == Ordering.DESC): # DESCENDING
+            elif (order == Order.DESC): # DESCENDING
                 if (array[idx] < array[j]):
                     idx = j
 

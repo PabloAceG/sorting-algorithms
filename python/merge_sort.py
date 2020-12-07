@@ -1,36 +1,47 @@
-from strategy import Ordering
+from strategy import Order
 import sys
 
-def sort(array:list, order: Ordering=Ordering.ASC) -> list:
-    '''
-        Recursive function to order elements by dividing the input array into
-        two halves, making one recursive call per half, and then merging the 
-        returned elements into an ordered array.
+def sort(array:list, order: Order=Order.ASC) -> list:
+    """Sorts a list using MergeSort.
 
-        Time Complex:
-            - Best    -> O(n log(n))
-            - Average -> O(n log(n))
-            - Worst   -> O(n log(n))
-        Space Complex (Auxiliary Space): O(n)
-        Stable: Yes
-    '''
+    Recursive function to order elements by dividing the input array into
+    two halves, making one recursive call per half, and then merging the 
+    returned elements into an ordered array.
+
+    Time Complex:
+        Best    -> O(n log(n))
+        Average -> O(n log(n))
+        Worst   -> O(n log(n))
+    Space Complex (Auxiliary Space): O(n)
+    Stable: Yes
+
+    Args:
+        array (list) -- Elements to order.
+        order (Order) -- Order preference (default ASCending).
+
+    Returns:
+        list: Ordered elements.
+    """
     # Exists the program if the ordering is not valid. 
-    if (order not in [Ordering.ASC, Ordering.DESC]):
-        sys.exit("Not Valid Ordering")
+    if (order not in [Order.ASC, Order.DESC]):
+        sys.exit("Not Valid Ordering Preference")
 
     return _merge_sort(array, order)
 
 def _merge_sort(array, order):
-    '''
-        Recursive function where array is splitted into two separate parts 
-        (divided in the middle) and then merged ordering the two independing
-        parts into a new ordered array.
+    """Recursive sorting function of a list using MergeSort.
 
-        Input:
-            - array: List of elements to order.
-            - order: Ordering preference: ascending/descending.
-        Output: Ordered array.
-    '''
+    Recursive function where an array is splitted into two separate parts
+    (divided in the middle) and then merged ordering the two independing parts 
+    into a new ordered array.
+
+    Args:
+        array (list) -- List of elements to order.
+        order (Order) -- Order preference: ascending/descending.
+
+    Returns: 
+        list: Ordered array.
+    """
     # Recursion base condition, no more elements
     if (len(array) <= 1): # Single element array (or empty)
         return array
@@ -50,30 +61,33 @@ def _merge_sort(array, order):
     return _merge(L, R, order)
 
 def _merge(arr1, arr2, order):
-    '''
-        Merges the two arrays passed as parameters into an ordered array. 
-        Assumes that the inputting arrays are ordered.
+    """Union of two ordered lists into one.
 
-        Input:
-            - arr1: First ordered array.
-            - arr2: Second ordered array.
-            - order: Ordering preference: ascending/descending.
-        Output: Ordered union of both input array.
-    '''
+    Merges the two arrays passed as parameters into an ordered array. Assumes 
+    that the inputting arrays are ordered.
+
+    Args:
+        arr1 (list) -- First ordered array.
+        arr2 (list) -- Second ordered array.
+        order (Order) -- Order preference: ascending/descending.
+
+    Return: 
+        list: Ordered union of both input array.
+    """
     # Iterators: i for arr1; j for arr2
     i = j = 0
 
     sorted_arr = []
 
     while i < len(arr1) and j < len(arr2):
-        if (order == Ordering.ASC):     # ASCENDING
+        if (order == Order.ASC):     # ASCENDING
             if (arr1[i] < arr2[j]):
                 sorted_arr.append(arr1[i])
                 i += 1
             else:
                 sorted_arr.append(arr2[j])
                 j += 1
-        elif (order == Ordering.DESC):  # DESCENDING
+        elif (order == Order.DESC):  # DESCENDING
             if (arr1[i] > arr2[j]):
                 sorted_arr.append(arr1[i])
                 i += 1
