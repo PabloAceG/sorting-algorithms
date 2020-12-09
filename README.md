@@ -29,7 +29,20 @@
             <td>O(1)</td>
             <td>Yes</td>
             <td>Yes</td>
-            <td>-</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>Bucket Sort</td>
+            <td>O(n+k)</td>
+            <td>--</td>
+            <td>O(n+k)</td>
+            <td>--</td>
+            <td>O(n<sup>2</sup>)</td>
+            <td>--</td>
+            <td>O(1)</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>SG</td>
         </tr>
         <tr>
             <td>Insertion Sort</td>
@@ -39,7 +52,7 @@
             <td>O(n<sup>2</sup>)</td>
             <td>O(n<sup>2</sup>)</td>
             <td>O(n<sup>2</sup>)</td>
-            <td>O(1)</td>
+            <td>O(n+k)</td>
             <td>Yes</td>
             <td>Yes</td>
             <td>Inc</td>
@@ -81,7 +94,7 @@
             <td>O(1)</td>
             <td>No</td>
             <td>Yes</td>
-            <td>-</td>
+            <td>--</td>
         </tr>
     </tbody>
 </table>
@@ -97,6 +110,10 @@ incrementally (step by step) on changes by adapting the input.
 
 **_In Place_** An algorithm that does not need extra space and produces output 
 in the same space (memory) that contains the data.
+
+**_SG_** Scatter-Gather Approach. It sparsely copies the elements of _x_ their
+corresponding locations in _y_. After performing the necessary operations, the
+elements are then put together from _y_ to _x_.
 
 **_Stable_** - For sorting algorithms it means that in independent executions 
 elements that are equal are going to be in the same order.
@@ -120,8 +137,9 @@ The reason behind this discrimination is the number of swaps done by the
 algorithm. In 
 [insertion sort](https://github.com/PabloAceG/sorting-algorithms#insertion-sort),
 the best case scenario (an almost ordered 
-list) time complexity is the same as in **bubble sort** with the difference that
-the number of swaps done by **bubble sort each algorithm is vastly greater**.
+list) time complexity is the same as in **bubble sort** with the difference 
+that the number of swaps done by **bubble sort each algorithm is vastly 
+greater**.
 
 #### When to use it?
 
@@ -132,6 +150,22 @@ According to some sources
 [Wikipedia](https://en.wikipedia.org/wiki/Bubble_sort#Use)) it is also used in
 computer graphics for its capability of detecting small errors in almost sorted
 arrays and solve them in linear time complexity _O(2n)_.
+
+## Bucket Sort
+
+Also known as **bin sort**, is a sorting algorithm that works by distributing 
+elements into buckets and then applying sorting on each individual bucket. The
+time complexity of the algorithm depends on the sorting algorithm of the 
+buckets.
+
+For this implementation, it has been selected 
+[insertion sort](https://github.com/PabloAceG/sorting-algorithms#insertion-sort) 
+as defualt.
+
+#### Comparison
+
+**Bucket sort** is a generalization of counting sort; it can degenerate into 
+this algorithm if this size of the bucket approximates to _1_. 
 
 ## Insertion Sort
 
@@ -145,8 +179,8 @@ process is repeated until no element is left.
 #### When to use it?
 
 This sorting algorithm is used when number of elements to order is small. 
-Another situation where this approach can be useful is when the array is already
-almost sorted as not many elements need to be moved.
+Another situation where this approach can be useful is when the array is 
+already almost sorted as not many elements need to be moved.
 
 ## Merge Sort
 
@@ -164,8 +198,8 @@ in array, inserting an element in the middle of the array takes O(1), in extra
 space and time, very useful for the merge operation (sequential data access).
 
 On the other hand, arbitrary access to a give position, is is more expensive on
-a linked-list than on an array. That is why **QuickSort** is more efficient with
-arrays, as it uses a lot of this kind of accesses.
+a linked-list than on an array. That is why **QuickSort** is more efficient 
+with arrays, as it uses a lot of this kind of accesses.
 
 #### When to use it?
 
@@ -178,8 +212,9 @@ It is also used in
 ## Quick Sort
 
 Divide and Conquer approach. In the algorithm a _pivot_ element is used to 
-divide the array into two separate sub-arrays, depending on whether the elements
-are smaller/bigger than the _pivot_. Then, the arrays are sorted recursively.
+divide the array into two separate sub-arrays, depending on whether the 
+elements are smaller/bigger than the _pivot_. Then, the arrays are sorted 
+recursively.
 
 This can be on place to reduce space complexity, although the recursion also 
 takes some space. That's why it takes O(nLog(n)) in of auxiliary space.
@@ -192,7 +227,7 @@ Regarding on the pivot selection, there are different approaches:
 of these two.
 
 According to Jon L. 
-Bentley[[1]](https://github.com/PabloAceG/sorting-algorithms#references), using 
+Bentley[[1]](https://github.com/PabloAceG/sorting-algorithms#references), using
 the median seems like the most optimal approach.
 
 #### Comparison
