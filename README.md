@@ -45,6 +45,19 @@
             <td>SG</td>
         </tr>
         <tr>
+            <td>Counting Sort</td>
+            <td>O(n+k)</td>
+            <td>--</td>
+            <td>O(n+k)</td>
+            <td>--</td>
+            <td>O(n+k)</td>
+            <td>--</td>
+            <td>O(n+k)</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>--</td>
+        </tr>
+        <tr>
             <td>Insertion Sort</td>
             <td>O(n)</td>
             <td>O(1)</td>
@@ -164,8 +177,22 @@ as defualt.
 
 #### Comparison
 
-**Bucket sort** is a generalization of counting sort; it can degenerate into 
+**Bucket sort** is a generalization of 
+[counting sort](https://github.com/PabloAceG/sorting-algorithms#counting-sort); it can degenerate into 
 this algorithm if this size of the bucket approximates to _1_. 
+
+## Counting Sort
+
+This technique sorts a collection by counting the number of elements that have 
+a distinct key. Then, arithmetics are used to calculate the position of each 
+key value in the output sequence.
+
+#### Where to use it?
+
+It is not generally used. Normally, it is used a subroutine in another sorting,
+like 
+[radix sort](https://github.com/PabloAceG/sorting-algorithms#radix-sort) or 
+[bucker sort](https://github.com/PabloAceG/sorting-algorithms#bucket-sort).
 
 ## Insertion Sort
 
