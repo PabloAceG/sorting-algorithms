@@ -1,7 +1,7 @@
 from strategy import Order
 import sys
 
-def sort(array:list, order:Order=Order.ASC):
+def sort(array:list, order:Order=Order.ASC, is_char:bool=True):
     """Sorts a list of characters using CountingSort.
 
     Sorting algorithm that is based on keys between a specific range. It counts
@@ -24,30 +24,44 @@ def sort(array:list, order:Order=Order.ASC):
     Args:
         array (list) -- Elements to order.
         order (Order) -- Order preference (default ASCending).
+        is_char (bool) -- Are elements to order characters?
 
     Returns:
         list: Ordered elements.
     """
     num_elems = len(array)
+    range_val = 256
+
+    if not is_char:
+        range_val = 10
 
     # Sorted array
     output = [0 for i in range(num_elems)]
 
     # Storage for the count of individual characters 
-    count  = [0 for i in range(256)]
+    count  = [0 for i in range(range_val)]
 
     # Count the number of appearences of each character
     for c in array:
-        count[ord(c)] += 1
+        if is_char: 
+            count[ord(c)] += 1
+        else:
+            count[c] += 1
 
     # Each index stores the sum of the previous counts, symbolizing the index
     # of the output array
-    for i in range(256):
+    for i in range(1, range_val):
         count[i] += count[i-1]
 
     # Build the output array
     for i in range(num_elems):
-        output[count[ord(array[i])] - 1] = array[i] 
-        count[ord(array[i])] -= 1
+        pos = None
+        if is_char: 
+            pos = ord(array[i])
+        else:
+            pos = array[i]
+
+        output[count[pos] - 1] = array[i] 
+        count[pos] -= 1
 
     return output
