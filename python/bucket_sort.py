@@ -14,6 +14,9 @@ def sort(array:list, order:Order=Order.ASC, num_slots=10):
     3) Sort individual buckets with InsertionSort.
     4) Concatenate buckets.
 
+    DISCLAIMER:
+        This version of the algorithm only sorts floating point numbers.
+
     Time Complex:
         Best    -> O(n + k)
         Average -> k being the number of buckets.
@@ -26,6 +29,7 @@ def sort(array:list, order:Order=Order.ASC, num_slots=10):
     Args:
         array (list) -- Elements to order.
         order (Order) -- Order preference (default ASCending).
+        num_slots (int) -- Number of buckets (default 10).
 
     Returns:
         list: Ordered elements.
@@ -41,9 +45,7 @@ def sort(array:list, order:Order=Order.ASC, num_slots=10):
     # Create empty buckets
     slots = []
     for _ in range(num_slots):
-        slots.append([])# Exists the program if the ordering is not valid. 
-    if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        slots.append([]) # Exists the program if the ordering is not valid.
 
     # Place elements in buckets
     for elem in array: 
