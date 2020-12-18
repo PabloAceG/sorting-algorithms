@@ -97,6 +97,19 @@
             <td>D&C</td>
         </tr>
         <tr>
+            <td>Radix Sort</td>
+            <td>O(n*k)</td>
+            <td>--</td>
+            <td>O(n*k)</td>
+            <td>--</td>
+            <td>O(n*k)</td>
+            <td>--</td>
+            <td>O(n+k)</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>--</td>
+        </tr>
+        <tr>
             <td>Selection Sort</td>
             <td>O(n<sup>2</sup>)</td>
             <td>O(1)</td>
@@ -271,6 +284,34 @@ When dealing with sorting arrays and having to decide **MergeSort** or
 
 QuickSort is also tail recursive, therefore tail call optimization can be 
 applied.
+
+## Radix Sort
+
+This algorithm, also known as **DigitalSort** is a non-comparative sorting 
+algortithm that distributes elements through buckets according to their radix 
+(or base) - 
+[CountSort](https://github.com/PabloAceG/sorting-algorithms#count-sort). 
+When the elements have more than one significant digit, this process is repeated
+for every digit.
+
+#### Where to use it?
+
+This implementation only allows integer sorting (more than one digit). On the 
+other hand, other implementations also allow string sorting and other types of 
+sorting. This means that it can be used in the same situations as 
+[CountSort](https://github.com/PabloAceG/sorting-algorithms#count-sort), but 
+with more digits.
+
+#### Comparison
+
+When the number of bits is log2(n) for every digit, the running time of 
+**RadixSort** is better than 
+[QuickSort](https://github.com/PabloAceG/sorting-algorithms#quick-sort)  for a 
+wide range of input numbers. The constant factors hidden in asymptotic notation
+are higher for **RadixSort**. **QuickSort** uses hardware caches more 
+efficiently. It should also be taken into account that **RadixSort** uses
+[CountSort](https://github.com/PabloAceG/sorting-algorithms#count-sort) 
+underneath, which takes extra space.
 
 ## Selection Sort
 
