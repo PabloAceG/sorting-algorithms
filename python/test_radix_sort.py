@@ -1,9 +1,9 @@
 import unittest
 from radix_sort import sort
-from strategy import CountType
+from strategy import Order
 
-class SelectionSortTest(unittest.TestCase):
-    # Integers    
+class RadixSortTest(unittest.TestCase):
+    # Integers 
     def test_order_list_integers(self):
         # The desired order of the array
         ordered_arr_int = [5, 37, 54, 76, 78, 82, 113, 420]
@@ -14,6 +14,15 @@ class SelectionSortTest(unittest.TestCase):
         arr2 = [113, 54, 78, 82, 420, 37, 5, 76]
         self.assertEqual(ordered_arr_int, sort(arr))
         self.assertEqual(ordered_arr_int, sort(arr2))
+    
+    # Descending
+    def test_order_descending(self):
+        # The desired order of the array
+        ordered_arr = [420, 113, 82, 78, 76, 54, 37, 5]
+
+        # See if it is able to sort the array descending order
+        arr = [113, 54, 78, 82, 420, 37, 5, 76]
+        self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
 
     # Not Valid Values
     def test_order_list_non_valid(self):        

@@ -1,4 +1,4 @@
-from strategy import Order, CountType
+from strategy import Order
 import count_sort
 import sys
 
@@ -37,9 +37,16 @@ def sort(array:list, order:Order=Order.ASC):
     max_element = max(array)
 
     # Perform counting sort for every digit
+    pseudo_order = Order.ASC
     exponent = 1
     while (max_element // exponent) > 0:
-        array = count_sort.sort(array, order=order, type=CountType.RADIX, exponent=exponent)
+        # When having a descending order, first the array must be ordered 
+        # in ascending order (due to the structure of COUNT sort), and in the
+        # last iteration it must be ordered descendingly, so that in that 
+        # iteration the array is inverted with the COUNT sort call.
+        if order == Order.DESC and (max_element // (exponent * 10)) <= 0:
+            pseudo_order = Order.DESC
+        array = count_sort.sort(array, pseudo_order, is_radix=True, exponent=exponent)
         exponent *= 10
 
     return array

@@ -63,7 +63,10 @@ def sort(array:list, order:Order=Order.ASC, num_slots=10):
     k = 0
     for bucket in slots:
         for item in bucket:
-            array[k] = item
+            if (order == Order.ASC): # ASCENDING
+                array[k] = item
+            else:                    # DESCENDING
+                array[(len(array) - 1) - k] = item
             k += 1
 
     return array

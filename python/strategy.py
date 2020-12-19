@@ -9,8 +9,3 @@ class Pivot(Enum):
     LAST   = "last"
     RANDOM = "rand"
     MEDIAN = "med"
-
-class CountType(Enum):
-    INT   = 1
-    CHAR  = 2
-    RADIX = 3

@@ -1,7 +1,7 @@
-from strategy import Order, CountType
+from strategy import Order
 import sys
 
-def sort(array:list, order:Order=Order.ASC, type:CountType=CountType.CHAR, exponent:int=None):
+def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=None):
     """Sorts a list of characters using CountingSort.
 
     Sorting algorithm that is based on keys between a specific range. It counts
@@ -34,7 +34,8 @@ def sort(array:list, order:Order=Order.ASC, type:CountType=CountType.CHAR, expon
     Args:
         array (list) -- Elements to order.
         order (Order) -- Order preference (default ASCending).
-        type (CounType) -- What type of elements are going to be ordered
+        is_radix (bool) -- This algorithm can be a subroutine for RadixSort.
+        exponent (int) -- Only when is_radix=True. Radix/base being evaluated.
 
     Returns:
         list: Ordered elements.
@@ -43,51 +44,73 @@ def sort(array:list, order:Order=Order.ASC, type:CountType=CountType.CHAR, expon
     if (order not in [Order.ASC, Order.DESC]):
         sys.exit("Not Valid Ordering Preference")
 
+    # When using radix, exponent parameter is necessary
+    if is_radix and not exponent:
+        raise AttributeError("When using this argument as part of RadixSort, an exponent is also needed!")
+    elif not is_radix and exponent:
+        raise AttributeError("Exponent argument is not needed when not using RadixSort!")
+
+    # Empty list
+    if not array: 
+        return array
+
     # This algorithm cannot order Strings
     if (isinstance(array[0], float)): 
         raise ValueError("This sorting algorithm does not take floating point numbers!")
 
     num_elems = len(array)
-    range_val = 256 # Default range of values (for characters)
-
-    if type is not CountType.CHAR: # When just sorting numbers, range goes  
-        range_val = 10             # within 1 digit numbers (0..9)
+    # Dependending on type of list the number of buckets may vary
+    # STR -> 256
+    # INT -> 10
+    is_str = isinstance(array[0], str)
+    num_buckets = 256 if is_str else 10
 
     # Sorted array
     output = [0 for i in range(num_elems)]
 
     # Storage for the count of individual characters 
-    count  = [0 for i in range(range_val)]
+    count  = [0 for i in range(num_buckets)]
 
     # Count the number of appearences of each character
-    for c in array:
-        if type is CountType.CHAR:  # CHARACTERS
-            count[ord(c)] += 1
-        elif type is CountType.INT: # INTEGERS
-            count[c] += 1
-        else:                       # RADIX SORT
-            pos = int((c / exponent) % 10)
-            count[pos] += 1
+    for d in array:
+        # Characters need to be converted to integers to be counted
+        digit = ord(d) if is_str else d
+        # Index to where add the count
+        # When using RADIX, it is given that each value has multiple digits
+        bucket = int((digit / exponent) % num_buckets) if is_radix else digit
+        count[bucket] += 1
 
     # Each index stores the sum of the previous counts, symbolizing the index
     # of the output array
-    for i in range(1, range_val):
+    for i in range(1, num_buckets):
         count[i] += count[i-1]
 
     # Build the output array
     for i in range(num_elems):
-        pos = None
-        j = i # Necessary to take into account RADIX SORT special case
-        if   type is CountType.CHAR: # CHARACTERS
-            pos = ord(array[i])
-        elif type is CountType.INT:  # INTEGERS
-            pos = array[i]
-        else:                        # RADIX SORT
-            # For RADIX sort it should be traversed in reverse order to 
-            # maintain the order of already ordered elements (previous call).
+        bucket = None
+        j = i
+        # COUNT sort might be used as subroutine for RADIX sort
+        if is_radix:
             j = (num_elems - 1) - i
-            pos = int((array[j] / exponent) % 10)
-        output[count[pos] - 1] = array[j] 
-        count[pos] -= 1
+            # Characters need to be converted to integers to be counted
+            digit = ord(array[j]) if is_str else array[j]
+            # Where to place the current element
+            bucket = int((digit / exponent) % 10)
+        else:
+            # Characters need to be converted to integers to be counted
+            digit = ord(array[j]) if is_str else array[j]
+            # Where to place the current element
+            bucket = digit
+        # Move element to output array
+        output[count[bucket] - 1] = array[j] 
+        count[bucket] -= 1
 
-    return output
+    # Copy sorted elements back to array, this also allows to sort the array on
+    # descending order
+    for i in range(num_elems):
+        if (order == Order.ASC): # ASCENDING
+            array[i] = output[i]
+        else:                    # DESCENDING
+            array[i] = output[(num_elems - 1) - i]
+
+    return array    

@@ -1,5 +1,6 @@
 import unittest
 from selection_sort import sort
+from strategy import Order
 
 class SelectionSortTest(unittest.TestCase):
     # Integers
@@ -69,6 +70,15 @@ class SelectionSortTest(unittest.TestCase):
                 '2ZvVygy7kV', 'LaK7Zv0vFn']
         self.assertEqual(ordered_arr_string, sort(arr3))
         self.assertEqual(ordered_arr_string, sort(arr4)) 
+
+    # Descending
+    def test_order_descending(self):
+        # The desired order of the array
+        ordered_arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+        # See if it is able to sort the array descending order
+        arr = [9, 5, 0, 1, 3, 2, 4, 8, 7, 6]
+        self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
 
 if __name__ == '__main__':
     unittest.main()
