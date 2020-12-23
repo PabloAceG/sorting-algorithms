@@ -58,6 +58,19 @@
             <td>--</td>
         </tr>
         <tr>
+            <td>Heap Sort</td>
+            <td>O(n)</td>
+            <td>--</td>
+            <td>O(n log(n))</td>
+            <td>--</td>
+            <td>O(n log(n))</td>
+            <td>--</td>
+            <td>O(1)</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>--</td>
+        </tr>
+        <tr>
             <td>Insertion Sort</td>
             <td>O(n)</td>
             <td>O(1)</td>
@@ -148,7 +161,7 @@ elements that are equal are going to be in the same order.
 
 ## Bubble Sort
 
-Cam also be called **sinking sort**. Repeatedly compares adjacent elements and
+Cam also be called **sinking sort**. Repeatedly compares adjacent elements and log(n)
 swaps them if they are wrongly ordered.
 
 Performs poorly in real world problem due to the number of swaps and time it 
@@ -181,7 +194,7 @@ arrays and solve them in linear time complexity _O(2n)_.
 
 Also known as **bin sort**, is a sorting algorithm that works by distributing 
 elements into buckets and then applying sorting on each individual bucket. The
-time complexity of the algorithm depends on the sorting algorithm of the 
+time complexity of the algorithm depends on the sorting  log(n)algorithm of the 
 buckets.
 
 For this implementation, it has been selected 
@@ -206,6 +219,20 @@ It is not generally used. Normally, it is used a subroutine in another sorting,
 like 
 [radix sort](https://github.com/PabloAceG/sorting-algorithms#radix-sort) or 
 [bucker sort](https://github.com/PabloAceG/sorting-algorithms#bucket-sort).
+
+## Heap Sort
+
+This sorting algorithm comes from an optimization of 
+[selection sort](https://github.com/PabloAceG/sorting-algorithms#selection-sort).
+This algorithm shrinks the unsorted region extracting the largest element and 
+placing it in the sorted region. By maintaining the unsorted region in a heap 
+data can be accessed faster.
+
+#### Comparison
+
+**SelectionSort** divides the list into sorted and unsorted, wasting linear
+time evaluating those regions. On the other hand, **HeapSort** uses time to 
+find the largest element in each step.
 
 ## Insertion Sort
 

@@ -95,7 +95,7 @@ def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=No
             # Characters need to be converted to integers to be counted
             digit = ord(array[j]) if is_str else array[j]
             # Where to place the current element
-            bucket = int((digit / exponent) % 10)
+            bucket = int((digit / exponent) % num_buckets)
         else:
             # Characters need to be converted to integers to be counted
             digit = ord(array[j]) if is_str else array[j]
