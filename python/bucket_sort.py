@@ -1,8 +1,8 @@
-from strategy import Order
+from strategy import Order, BadOrderError
 import insertion_sort
 import sys
 
-def sort(array:list, order:Order=Order.ASC, num_slots=10):
+def sort(array:list, order:Order=Order.ASC, num_slots:int=10) -> list:
     """Sorts a list of floating point numbers using BucketSort.
 
     An algorithm that distributes the elements into a number of buckets. Each
@@ -36,7 +36,11 @@ def sort(array:list, order:Order=Order.ASC, num_slots=10):
     """
     # Exists the program if the ordering is not valid. 
     if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        raise BadOrderError("Not Valid Ordering Preference")
+
+    # Empty list
+    if not array: 
+        return []
 
     # This algorithm cannot order Strings
     if (type(array[0]) is str): 

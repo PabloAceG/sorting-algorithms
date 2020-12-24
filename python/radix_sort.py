@@ -1,8 +1,8 @@
-from strategy import Order
+from strategy import Order, BadOrderError
 import count_sort
 import sys
 
-def sort(array:list, order:Order=Order.ASC):
+def sort(array:list, order:Order=Order.ASC) -> list:
     """Sorts a list of floating point numbers using RadixSort.
 
     A sorting algorithm that uses digit by digit sorting, starting from the 
@@ -27,7 +27,11 @@ def sort(array:list, order:Order=Order.ASC):
     """
     # Exists the program if the ordering is not valid. 
     if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        raise BadOrderError("Not Valid Ordering Preference")
+
+    # Empty list
+    if not array: 
+        return []
 
     # This algorithm cannot order Strings
     if (not isinstance(array[0], int)): 

@@ -1,5 +1,4 @@
-from strategy import Order
-from strategy import Pivot
+from strategy import Order, Pivot, BadOrderError, BadPivotError
 import random
 import sys
 
@@ -26,10 +25,11 @@ def sort(array:list, order:Order=Order.ASC, strategy:Pivot=Pivot.MEDIAN) -> list
     """
     # Exists the program if the ordering is not valid. 
     if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        raise BadOrderError("Not Valid Ordering Preference")
+
     # Exists the program if the pivot is not valid. 
     if (strategy not in [Pivot.FIRST, Pivot.LAST, Pivot.RANDOM, Pivot.MEDIAN]):
-        sys.exit("Not valid Pivot")
+        raise BadPivotError("Not valid Pivot")
 
     return quicksort(array, order, strategy, 0, len(array) - 1)
 

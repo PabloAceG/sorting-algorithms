@@ -1,20 +1,9 @@
 import unittest
 from count_sort import sort
-from strategy import Order
+from strategy import Order, BadOrderError, BadArgumentCombinationError
 
 class CountSortTest(unittest.TestCase):
-    # Integers
-    def test_order_list_ten_numbers(self):
-        # The desired order of the array
-        ordered_arr_char = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-        # See if it does not desorders an ordered array of integers and that
-        # it is able to order an array of integers
-        arr  = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        arr2 = ["9", "5", "0", "1", "3", "2", "4", "8", "7", "6"]
-        self.assertEqual(ordered_arr_char, sort(arr))
-        self.assertEqual(ordered_arr_char, sort(arr2))
-    
+    # Order integers
     def test_order_list_integers(self):
         # The desired order of the array
         ordered_arr_int = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -25,9 +14,21 @@ class CountSortTest(unittest.TestCase):
         arr2 = [9, 5, 0, 1, 3, 2, 4, 8, 7, 6]
         self.assertEqual(ordered_arr_int, sort(arr))
         self.assertEqual(ordered_arr_int, sort(arr2))
+
+    # Order integers in string format
+    def test_order_list_ten_str_numbers(self):
+        # The desired order of the array
+        ordered_arr_char = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+        # See if it does not desorders an ordered array of integers and that
+        # it is able to order an array of integers
+        arr  = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        arr2 = ["9", "5", "0", "1", "3", "2", "4", "8", "7", "6"]
+        self.assertEqual(ordered_arr_char, sort(arr))
+        self.assertEqual(ordered_arr_char, sort(arr2))
     
-    # Strings
-    def test_order_list_ten_strings(self):
+    # Order characters
+    def test_order_list_ten_characters(self):
         # The desired order of the array
         ordered_arr_char = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
         
@@ -38,7 +39,7 @@ class CountSortTest(unittest.TestCase):
         self.assertEqual(ordered_arr_char, sort(arr))
         self.assertEqual(ordered_arr_char, sort(arr2))
 
-    # Descending
+    # Order descending
     def test_order_descending(self):
         # The desired order of the array
         ordered_arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
@@ -46,6 +47,17 @@ class CountSortTest(unittest.TestCase):
         # See if it is able to sort the array descending order
         arr = [9, 5, 0, 1, 3, 2, 4, 8, 7, 6]
         self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
+
+    # Empty array
+    def test_empty_list(self):
+        # Empty list ordering should return empty list
+        self.assertEqual([], sort([]))
+
+    # Bad Inputs
+    def test_bad_order(self):
+        # Bad ordering preference should raise an error
+        with self.assertRaises(BadOrderError):
+            sort([], order="BadOrder")
 
     # Not Valid Values
     def test_order_list_non_valid(self):        
@@ -58,11 +70,13 @@ class CountSortTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             sort(arr)
 
+    # Some arguments cannot be used together for certain function behaviours
+    def test_bad_function_argument_combination(self):
         # Uses RADIX sort but does not provide exponent
-        with self.assertRaises(AttributeError):
+        with self.assertRaises(BadArgumentCombinationError):
             sort([], is_radix=True)
         # No RADIX sort but uses exponent
-        with self.assertRaises(AttributeError):
+        with self.assertRaises(BadArgumentCombinationError):
             sort([], exponent=10)
     
 if __name__ == '__main__':

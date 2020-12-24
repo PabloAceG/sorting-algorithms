@@ -1,9 +1,9 @@
 import unittest
 from radix_sort import sort
-from strategy import Order
+from strategy import Order, BadOrderError
 
 class RadixSortTest(unittest.TestCase):
-    # Integers 
+    # Order integers 
     def test_order_list_integers(self):
         # The desired order of the array
         ordered_arr_int = [5, 37, 54, 76, 78, 82, 113, 420]
@@ -15,7 +15,7 @@ class RadixSortTest(unittest.TestCase):
         self.assertEqual(ordered_arr_int, sort(arr))
         self.assertEqual(ordered_arr_int, sort(arr2))
     
-    # Descending
+    # Order descending
     def test_order_descending(self):
         # The desired order of the array
         ordered_arr = [420, 113, 82, 78, 76, 54, 37, 5]
@@ -23,6 +23,17 @@ class RadixSortTest(unittest.TestCase):
         # See if it is able to sort the array descending order
         arr = [113, 54, 78, 82, 420, 37, 5, 76]
         self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
+
+    # Empty array
+    def test_empty_list(self):
+        # Empty list ordering should return empty list
+        self.assertEqual([], sort([]))
+
+    # Bad Inputs
+    def test_bad_order(self):
+        # Bad ordering preference should raise an error
+        with self.assertRaises(BadOrderError):
+            sort([], order="BadOrder")
 
     # Not Valid Values
     def test_order_list_non_valid(self):        

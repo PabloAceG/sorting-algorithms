@@ -1,7 +1,7 @@
-from strategy import Order
+from strategy import Order, BadOrderError
 import sys
 
-def sort(array:list, order:Order=Order.ASC):
+def sort(array:list, order:Order=Order.ASC) ->  list:
     """Sorts a list using HeapSort.
 
     Sorting algorithm that uses a Binary Heap implemented on an list. The 
@@ -38,6 +38,10 @@ def sort(array:list, order:Order=Order.ASC):
     Returns:
         list: Ordered elements.
     """
+    # Exists the program if the ordering is not valid. 
+    if (order not in [Order.ASC, Order.DESC]):
+        raise BadOrderError("Not Valid Ordering Preference")
+    
     num_elems = len(array)
 
     # Build a max/min heap

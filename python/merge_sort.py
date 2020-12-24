@@ -1,4 +1,4 @@
-from strategy import Order
+from strategy import Order, BadOrderError
 import sys
 
 def sort(array:list, order: Order=Order.ASC) -> list:
@@ -24,7 +24,7 @@ def sort(array:list, order: Order=Order.ASC) -> list:
     """
     # Exists the program if the ordering is not valid. 
     if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        raise BadOrderError("Not Valid Ordering Preference")
 
     return _merge_sort(array, order)
 

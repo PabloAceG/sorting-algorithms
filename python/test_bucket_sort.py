@@ -1,10 +1,10 @@
 import unittest
 from bucket_sort import sort
-from strategy import Order
+from strategy import Order, BadOrderError
 
 class BucketSortTest(unittest.TestCase):
-    # Floats
-    def test_order_list_ten_numbers(self):
+    # Order decimals
+    def test_order_list_ten_decimals(self):
         # The desired order of the array
         ordered_arr_float = [0.130549262817116, 0.218716609132574, 
                              0.250759585601376, 0.308800541636632, 
@@ -27,7 +27,7 @@ class BucketSortTest(unittest.TestCase):
         self.assertEqual(ordered_arr_float, sort(arr))
         self.assertEqual(ordered_arr_float, sort(arr2))
 
-    # Descending
+    # Order escending
     def test_order_descending(self):
         # The desired order of the array
         ordered_arr = [0.943529879515157, 0.835447955717431,
@@ -44,8 +44,18 @@ class BucketSortTest(unittest.TestCase):
                0.607735863960446, 0.130549262817116]
         self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
 
-    # Not Valid Values
-    def test_order_list_non_valid(self):        
+    # Empty array
+    def test_empty_list(self):
+        # Empty list ordering should return empty list
+        self.assertEqual([], sort([]))
+
+    # Bad Order
+    def test_bad_order(self):
+        with self.assertRaises(BadOrderError):
+            sort([], order="BadOrder")
+
+    # Not Valid Types
+    def test_order_non_valid_type(self):        
         # This implementation of BucketSort is not able to sort Integers
         arr  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         with self.assertRaises(ValueError):

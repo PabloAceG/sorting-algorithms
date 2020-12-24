@@ -1,7 +1,7 @@
-from strategy import Order
+from strategy import Order, BadOrderError, BadArgumentCombinationError
 import sys
 
-def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=None):
+def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=None) -> list:
     """Sorts a list of characters using CountingSort.
 
     Sorting algorithm that is based on keys between a specific range. It counts
@@ -42,17 +42,17 @@ def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=No
     """
     # Exists the program if the ordering is not valid. 
     if (order not in [Order.ASC, Order.DESC]):
-        sys.exit("Not Valid Ordering Preference")
+        raise BadOrderError("Not Valid Ordering Preference")
 
     # When using radix, exponent parameter is necessary
     if is_radix and not exponent:
-        raise AttributeError("When using this argument as part of RadixSort, an exponent is also needed!")
+        raise BadArgumentCombinationError("When using this argument as part of RadixSort, an exponent is also needed!")
     elif not is_radix and exponent:
-        raise AttributeError("Exponent argument is not needed when not using RadixSort!")
+        raise BadArgumentCombinationError("Exponent argument is not needed when not using RadixSort!")
 
     # Empty list
     if not array: 
-        return array
+        return []
 
     # This algorithm cannot order Strings
     if (isinstance(array[0], float)): 
@@ -113,4 +113,4 @@ def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=No
         else:                    # DESCENDING
             array[i] = output[(num_elems - 1) - i]
 
-    return array    
+    return array
