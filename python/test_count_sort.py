@@ -2,6 +2,15 @@ import unittest
 from count_sort import sort
 from strategy import Order, BadOrderError, BadArgumentCombinationError
 
+__author__ = "Pablo Acereda"
+__copyright__ = "Copyright 2020"
+__credits__ = [ "Pablo Acereda" ]
+
+__license__ = "Apache License 2.0"
+__version__ = "1.0"
+__maintainer__ = "Pablo Acereda"
+__email__ = "p.aceredag@gmail.com"
+
 class CountSortTest(unittest.TestCase):
     # Order integers
     def test_order_list_integers(self):

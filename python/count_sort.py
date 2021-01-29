@@ -1,6 +1,15 @@
 from strategy import Order, BadOrderError, BadArgumentCombinationError
 import sys
 
+__author__ = "Pablo Acereda"
+__copyright__ = "Copyright 2020"
+__credits__ = [ "Pablo Acereda" ]
+
+__license__ = "Apache License 2.0"
+__version__ = "1.0"
+__maintainer__ = "Pablo Acereda"
+__email__ = "p.aceredag@gmail.com"
+
 def sort(array:list, order:Order=Order.ASC, is_radix:bool=False, exponent:int=None) -> list:
     """Sorts a list of characters using CountingSort.
 
