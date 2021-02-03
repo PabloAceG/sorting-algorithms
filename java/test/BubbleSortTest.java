@@ -2,8 +2,6 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
 
 import src.algorithms.BubbleSort;
@@ -11,7 +9,7 @@ import src.strategy.Order;
 
 /**
 *
-* Tesst to Bubble Sort algorithm.
+* Tests for Bubble Sort algorithm.
 *
 * @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
 * @version: 1.0
@@ -26,8 +24,9 @@ class BubbleSortTest {
 		Integer[] array   = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
+		array = bs.<Integer>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, bs.<Integer>sort(array, Order.ASC)));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -36,8 +35,9 @@ class BubbleSortTest {
 		Integer[] array   = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
+		array = bs.<Integer>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, bs.<Integer>sort(array, Order.DESC)));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -46,8 +46,9 @@ class BubbleSortTest {
 		Integer[] array   = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
+		array = bs.<Integer>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, bs.<Integer>sort(array, Order.ASC)));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -56,8 +57,9 @@ class BubbleSortTest {
 		Integer[] array   = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
+		array = bs.<Integer>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, bs.<Integer>sort(array, Order.DESC)));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -66,10 +68,9 @@ class BubbleSortTest {
 		Integer[] array   = {9, 5, 10, 1, 3, 2, 4, 8, 7, 6};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
-		
 		array = bs.<Integer>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -78,10 +79,9 @@ class BubbleSortTest {
 		Integer[] array   = {9, 5, 10, 1, 3, 2, 4, 8, 7, 6};
 		
 		BubbleSort<Integer> bs = new BubbleSort<Integer>();
-		
 		array = bs.<Integer>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -98,10 +98,9 @@ class BubbleSortTest {
                 		   0.607735863960446f, 0.130549262817116f};
 		
 		BubbleSort<Float> bs = new BubbleSort<Float>();
-		
 		array = bs.<Float>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -118,10 +117,9 @@ class BubbleSortTest {
      		   			   0.607735863960446f, 0.130549262817116f};
 		
 		BubbleSort<Float> bs = new BubbleSort<Float>();
-		
 		array = bs.<Float>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -130,10 +128,9 @@ class BubbleSortTest {
 		Character[] array =   {'e', 'c', 'j', 'b', 'h', 'f', 'd', 'a', 'g', 'i'};
 		
 		BubbleSort<Character> bs = new BubbleSort<Character>();
-		
 		array = bs.<Character>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -142,10 +139,9 @@ class BubbleSortTest {
 		Character[] array   = {'e', 'c', 'j', 'b', 'h', 'f', 'd', 'a', 'g', 'i'};
 		
 		BubbleSort<Float> bs = new BubbleSort<Float>();
-		
 		array = bs.<Character>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -163,10 +159,9 @@ class BubbleSortTest {
                 			"2ZvVygy7kV", "LaK7Zv0vFn"};
 		
 		BubbleSort<String> bs = new BubbleSort<String>();
-		
 		array = bs.<String>sort(array, Order.ASC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -185,7 +180,7 @@ class BubbleSortTest {
 		BubbleSort<String> bs = new BubbleSort<String>();
 		array = bs.<String>sort(array, Order.DESC);
 		
-		assertTrue(Arrays.equals(ordered, array));
+		assertArrayEquals(ordered, array);
 	}
 	
 	@Test
@@ -193,10 +188,10 @@ class BubbleSortTest {
 		Integer[] ordered = {};
 		Integer[] array = {};
 		
-		BubbleSort<String> bs = new BubbleSort<String>();
+		BubbleSort<Integer> bs = new BubbleSort<Integer>();
 		
-		assertTrue(Arrays.equals(ordered, bs.sort(array, Order.ASC)));
-		assertTrue(Arrays.equals(ordered, bs.sort(array, Order.DESC)));
+		assertArrayEquals(ordered, bs.sort(array, Order.ASC));
+		assertArrayEquals(ordered, bs.sort(array, Order.DESC));
 	}
 
 }
