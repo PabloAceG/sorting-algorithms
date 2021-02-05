@@ -1,6 +1,6 @@
 import unittest
 from quick_sort import sort
-from strategy import Order, BadOrderError, BadPivotError
+from strategy import Order, Pivot, BadOrderError, BadPivotError
 
 __author__ = "Pablo Acereda"
 __copyright__ = "Copyright 2020"
@@ -92,6 +92,50 @@ class QuickSortTest(unittest.TestCase):
         # See if it is able to sort the array descending order
         arr = [9, 5, 0, 1, 3, 2, 4, 8, 7, 6]
         self.assertEqual(ordered_arr, sort(arr, order=Order.DESC))
+        
+    def test_order_list_ten_integers_first(self):
+        # The desired order of the array
+        ordered_arr_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        # See if it does not desorders an ordered array of integers and that
+        # it is able to order an array of integers
+        arr  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr2 = [9, 5, 10, 1, 3, 2, 4, 8, 7, 6]
+        self.assertEqual(ordered_arr_int, sort(arr,  strategy=Pivot.FIRST))
+        self.assertEqual(ordered_arr_int, sort(arr2, strategy=Pivot.FIRST))
+        
+    def test_order_list_ten_integers_last(self):
+        # The desired order of the array
+        ordered_arr_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        # See if it does not desorders an ordered array of integers and that
+        # it is able to order an array of integers
+        arr  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr2 = [9, 5, 10, 1, 3, 2, 4, 8, 7, 6]
+        self.assertEqual(ordered_arr_int, sort(arr,  strategy=Pivot.LAST))
+        self.assertEqual(ordered_arr_int, sort(arr2, strategy=Pivot.LAST))
+        
+    def test_order_list_ten_integers_random(self):
+        # The desired order of the array
+        ordered_arr_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        # See if it does not desorders an ordered array of integers and that
+        # it is able to order an array of integers
+        arr  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr2 = [9, 5, 10, 1, 3, 2, 4, 8, 7, 6]
+        self.assertEqual(ordered_arr_int, sort(arr,  strategy=Pivot.RANDOM))
+        self.assertEqual(ordered_arr_int, sort(arr2, strategy=Pivot.RANDOM))
+        
+    def test_order_list_ten_integers_median(self):
+        # The desired order of the array
+        ordered_arr_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        # See if it does not desorders an ordered array of integers and that
+        # it is able to order an array of integers
+        arr  = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr2 = [9, 5, 10, 1, 3, 2, 4, 8, 7, 6]
+        self.assertEqual(ordered_arr_int, sort(arr,  strategy=Pivot.MEDIAN))
+        self.assertEqual(ordered_arr_int, sort(arr2, strategy=Pivot.MEDIAN))
 
     # Empty array
     def test_empty_list(self):

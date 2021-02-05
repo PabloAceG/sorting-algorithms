@@ -46,7 +46,7 @@ def quicksort(array, order, strategy, lower, upper):
     """Recursive sorting function of a list using QuickSort.
 
     Recursive function to order elements using pivots to redistribute the rest 
-    of the elements of te array. The pivot selected is used as the center 
+    of the elements of the array. The pivot selected is used as the center 
     element (ordering element) of the array.
 
     Args:
@@ -66,11 +66,11 @@ def quicksort(array, order, strategy, lower, upper):
     # Define pivot depending on strategy
     pivot = None
     if (strategy == Pivot.FIRST):       # First
-        pivot = 0
+        pivot = lower
     elif (strategy == Pivot.LAST):      # Last
-        pivot = -1
+        pivot = upper
     elif (strategy == Pivot.RANDOM):    # Random
-        pivot = random.randint[0, len(array)]
+        pivot = random.randrange(lower, (upper+1))
     elif (strategy == Pivot.MEDIAN):    # Median
         pivot = _median_of_three(array, lower, upper)
 
