@@ -3,24 +3,24 @@ package src.algorithms;
 import src.strategy.Order;
 
 /**
-*
-* A sorting algorithm that virtually splits the array to order in two 
-* sub-arrays:<br>
-* <br>
-* 1) Ordered part - left-most part.<br>
-* 2) Unordered part - right-most part.<br>
-* <br>
-* The elements of 2 are picked one by one and inserted in their respective 
-* position in 1.
-*
-* @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
-* @version: 1.0
-* @license: Copyright 2021 © Pablo Acereda
-* License under Apache License, Version 2.0
-* 
-* @param <T> Primitive datatype or object.
-*
-*/
+ *
+ * A sorting algorithm that virtually splits the array to order in two 
+ * sub-arrays:<br>
+ * <br>
+ * 1) Ordered part - left-most part.<br>
+ * 2) Unordered part - right-most part.<br>
+ * <br>
+ * The elements of 2 are picked one by one and inserted in their respective 
+ * position in 1.
+ *
+ * @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
+ * @version: 1.0
+ * @license: Copyright 2021 © Pablo Acereda
+ * License under Apache License, Version 2.0
+ *  
+ * @param <T> Primitive datatype or object.
+ *
+ */
 public class InsertionSort<T> extends SortingAlgorithm<T> {
 	/**
      * Sorts an array of elements using Bubble Sort algorithm.

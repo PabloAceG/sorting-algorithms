@@ -1,24 +1,23 @@
 package src.algorithms;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import src.strategy.Order;
 
 /**
-*
-* Recursive function to order elements by dividing the input array into two 
-* halves, making one recursive call per half, and the merging the returned 
-* elements into an ordered array.
-*
-* @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
-* @version: 1.0
-* @license: Copyright 2021 © Pablo Acereda
-* License under Apache License, Version 2.0
-* 
-* @param <T> Primitive datatype or object.
-*
-*/
+ *
+ * Recursive function to order elements by dividing the input array into two 
+ * halves, making one recursive call per half, and the merging the returned 
+ * elements into an ordered array.
+ *
+ * @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
+ * @version: 1.0
+ * @license: Copyright 2021 © Pablo Acereda
+ * License under Apache License, Version 2.0
+ * 
+ * @param <T> Primitive datatype or object.
+ *
+ */
 public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 	/**
 	 * Sorts an array of elements using Merge Sort algorithm.

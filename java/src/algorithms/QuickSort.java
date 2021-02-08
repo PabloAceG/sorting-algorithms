@@ -4,18 +4,18 @@ import src.strategy.Order;
 import src.strategy.Pivot;
 
 /**
-*
-* Recursive function to order elements using a pivot to redistribute the rest of
-* the elements of the array at each side of that pivot.
-*
-* @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
-* @version: 1.0
-* @license: Copyright 2021 © Pablo Acereda
-* License under Apache License, Version 2.0
-* 
-* @param <T> Primitive datatype or object.
-*
-*/
+ *
+ * Recursive function to order elements using a pivot to redistribute the rest of
+ * the elements of the array at each side of that pivot.
+ *
+ * @author: <a href="mailto:p.aceredag@gmail.com">Pablo Acereda</a>
+ * @version: 1.0
+ * @license: Copyright 2021 © Pablo Acereda
+ * License under Apache License, Version 2.0
+ * 
+ * @param <T> Primitive datatype or object.
+ *
+ */
 public class QuickSort<T> extends SortingAlgorithm<T> {
 
 	/**
