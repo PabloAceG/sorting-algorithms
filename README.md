@@ -1,3 +1,30 @@
+# Sorting Algorithms
+
+This repository contains my own implementation of sorting algorithms in 
+languages such as Python or Java, with an overall approximation of their
+efficiencies using _O notation_ and other parameters. As well as definitions
+and other information of each algorithm.
+
+Enjoy!
+
+![Whole Line Is It Anyway? - Come on in](assets/whose_line-come_on_in.gif)
+
+# Table of Contents
+
+* [Efficiency Evaluation](#efficiency-evaluation)
+* [_Glossary_](#glossary)
+* [Implemented Algorithms](#implemented-algorithms)
+  * [Bubble Sort](#bubble-sort)
+  * [Bucket Sort](#bucket-sort)
+  * [Counting Sort](#counting-sort)
+  * [Heap Sort](#heap-sort)
+  * [Insertion Sort](#insertion-sort)
+  * [Merge Sort](#merge-sort)
+  * [Quick Sort](#quick-sort)
+  * [Radix Sort](#radix-sort)
+  * [Selection Sort](#selection-sort)
+* [References](#references)
+
 # Efficiency Evaluation
 
 <table> 

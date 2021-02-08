@@ -83,13 +83,14 @@ public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 	 * 
 	 * @param <T> Primitive datatype or object.
 	 * 
+	 * @elements    Array containing all elements.
 	 * @param arr1  First ordered array.
 	 * @param arr2  Second ordered array.
 	 * @param order Order preference: ascending/descending.
 	 * 
 	 * @return      Ordered union of both input array.
 	 */
-	private <T extends Comparable<? super T>> T[] merge(T[] elements, T[] arr1, T[] arr2, Order order) {
+	private <T extends Comparable<T>> T[] merge(T[] elements, T[] arr1, T[] arr2, Order order) {
 		// i for arr1; j for arr2.
 		int i = 0;
 		int j = 0;
