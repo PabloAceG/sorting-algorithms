@@ -7,7 +7,7 @@ and other information of each algorithm.
 
 Enjoy!
 
-![Whole Line Is It Anyway? - Come on in](assets/whose_line-come_on_in.gif)
+![Whole Line Is It Anyway? - Come on in](./assets/whose_line-come_on_in.gif)
 
 # Table of Contents
 
