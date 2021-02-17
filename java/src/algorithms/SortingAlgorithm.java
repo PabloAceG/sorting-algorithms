@@ -23,7 +23,9 @@ public abstract class SortingAlgorithm<T> {
      *
      * @return      Sorted array.
      */
-    public abstract <T extends Comparable<T>> T[] sort(T[] elements, Order order);
+    @SuppressWarnings("hiding")
+	public abstract <T extends Comparable<T>> T[] sort(T[] elements, Order order) 
+    		throws Exception;
     
     /**
 	 * Interchange two elements.
