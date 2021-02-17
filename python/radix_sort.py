@@ -21,7 +21,7 @@ def sort(array:list, order:Order=Order.ASC) -> list:
         This implementation only allows positive integers sorting.
 
     Time Complex:
-        Best    -> O(n * k) where k is the number of bits required to to store 
+        Best    -> O(n * k) where k is the number of bits required to store 
         Average -> O(n * k) each key.
         Worst   -> O(n * k)
     Space Complex (Auxiliary Space): O(n + k)

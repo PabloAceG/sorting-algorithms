@@ -47,6 +47,7 @@ public class CountSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
      * @param order Order preference.
      *
      * @return      Sorted array.
+     * 
 	 * @throws BadArgumentTypeException 
 	 * @throws BadRadixArgumentException 
 	 */
@@ -58,7 +59,19 @@ public class CountSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 	}
 	
 	/**
-	 * Sorts an array of elements using Count Sort algorithm.
+	 * Sorts an array of elements using Count Sort algorithm. Can be used as
+	 * subroutine for RadixSort.
+	 * 
+	 * @TimeComplexity  
+     * Best    -> O(n+k) <br>
+     * Average -> O(n+k) <br>
+     * Worst   -> O(n²) <br>
+     * 
+     * @SpaceComplexity
+     * O(n+k)
+     * 
+     * @Stable
+     * Yes
 	 * 
 	 * @param <T> Primitive datatype or object.
 	 * 
@@ -68,7 +81,9 @@ public class CountSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 	 * @param exponent Only when isRadix=true. Radix/base being evaluated.
 	 * 
 	 * @return         Sorted array.
+	 * 
 	 * @throws BadRadixArgumentException 
+	 * @throws BadArgumentTypeException
 	 */
 	public <T extends Comparable<T>> T[] sort(T[] elements, Order order, boolean isRadix, int exponent) 
 			throws BadRadixArgumentException, 
