@@ -167,7 +167,7 @@ public class CountSortTest {
 		Character[] ordered = {'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'};
 		Character[] array   = {'e', 'c', 'j', 'b', 'h', 'f', 'd', 'a', 'g', 'i'};
 		
-		CountSort<Float> cs = new CountSort<Float>();
+		CountSort<Character> cs = new CountSort<Character>();
 		try {
 			array = cs.<Character>sort(array, Order.DESC);
 		} catch (BadRadixArgumentException | BadArgumentTypeException e) {
