@@ -248,10 +248,10 @@ public class RadixSortTest {
 		RadixSort<String> rs = new RadixSort<String>();
 		BadArgumentTypeException e = assertThrows(BadArgumentTypeException.class, () -> rs.<Integer>sort(array, Order.DESC));
 		
-		String expectedMEssage = "This Radix Sort implementation is not ready to sort negative numbers!";
+		String expectedMessage = "This Radix Sort implementation is not ready to sort negative numbers!";
 		String actualMessage = e.getMessage();
 		
-		assertTrue(actualMessage.contains(actualMessage));
+		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	
 	@Test

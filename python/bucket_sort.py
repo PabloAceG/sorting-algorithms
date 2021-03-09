@@ -1,4 +1,4 @@
-from strategy import Order, BadOrderError
+    from strategy import Order, BadOrderError
 import insertion_sort
 import sys
 
