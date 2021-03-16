@@ -193,5 +193,4 @@ class BubbleSortTest {
 		assertArrayEquals(ordered, bs.sort(array, Order.ASC));
 		assertArrayEquals(ordered, bs.sort(array, Order.DESC));
 	}
-
 }

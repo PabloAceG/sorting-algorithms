@@ -15,13 +15,13 @@ import src.strategy.Order;
 public abstract class SortingAlgorithm<T> {
 	/**
 	 * Sort a given array of any primitive datatype.
-	 * 
+	 *
 	 * @param <T> Primitive datatype or object.
-	 * 
+	 *
 	 * @param elements Elements to be ordered.
-	 * 
-	 * @return         Sorted array.
-	 * 
+	 *
+	 * @return Sorted array.
+	 *
 	 * @throws Exception
 	 */
 	@SuppressWarnings("hiding")
@@ -38,7 +38,7 @@ public abstract class SortingAlgorithm<T> {
      * @param elements Elements to be ordered.
      * @param order Order preference.
      *
-     * @return      Sorted array.
+     * @return Sorted array.
      * 
      * @throws Exception
      */
@@ -48,9 +48,9 @@ public abstract class SortingAlgorithm<T> {
     
     /**
 	 * Interchange two elements.
-	 * 
+	 *
 	 * @param <T> Generic type or object array.
-	 * 
+	 *
 	 * @param array Elements.
 	 * @param i Position of first element to swap.
 	 * @param j Position of second element to swap.

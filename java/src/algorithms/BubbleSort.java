@@ -18,26 +18,27 @@ import src.strategy.Order;
 public class BubbleSort<T> extends SortingAlgorithm<T> {
 	/**
      * Sorts an array of elements using Bubble Sort algorithm.
-     * 
+     *
      * @TimeComplexity  
      * Best    -> O(n) <br>
      * Average -> O(n²) <br>
      * Worst   -> O(n²) <br>
-     * 
+     *
      * @SpaceComplexity
      * O(1)
-     * 
+     *
      * @Stable
      * Yes
-     * 
+     *
      * @param <T> Primitive datatype or object.
      *
-     * @param array Elements to be ordered.
+     * @param elements Elements to be ordered.
      * @param order Order preference.
      *
-     * @return      Sorted array.
+     * @return Sorted array.
      */
 	@Override
+	@SuppressWarnings("hiding")
 	public <T extends Comparable<T>> T[] sort(T[] elements, Order order) {		
 		int numElements = elements.length;
 		boolean swapped;
@@ -50,16 +51,16 @@ public class BubbleSort<T> extends SortingAlgorithm<T> {
 				T current = elements[j];
 				T next    = elements[j+1];
 				
-				if ((order == Order.ASC  && current.compareTo(next) > 0)   || 
+				if ((order == Order.ASC  && current.compareTo(next) > 0)  || 
 					(order == Order.DESC && current.compareTo(next) < 0)) {
 					this.swap(elements, j, j+1);
 					swapped = true;
-				} 
+				}
 			}
-			
+
 			if(!swapped) break;
 		}
-		
+
 		return elements;
 	}
 

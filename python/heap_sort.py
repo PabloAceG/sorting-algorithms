@@ -13,13 +13,10 @@ __email__ = "p.aceredag@gmail.com"
 def sort(array:list, order:Order=Order.ASC) ->  list:
     """Sorts a list using HeapSort.
 
-    Sorting algorithm that uses a Binary Heap implemented on an list. The 
-    smallest or largest element is found an placed at the top of the heap. That
-    process is repeated until no element is left.
-
-    Sorting algorithm that uses a Binary Heap implemented on an list. The 
-    smallest or largest element is found an placed at the top of the heap. That
-    process is repeated until no element is l
+    Sorting algorithm that uses a Binary Heap implemented on an list to sort
+    elements. The smallest or largest element is found an placed at the top of 
+    the heap. That process is repeated until no elements are left.
+    
     1) Build a min/max heap. 
     2) Smallest/largest item is stored at the root of the heap.
        Replace the root element with the last element of the heap followed by 
@@ -71,9 +68,9 @@ def sort(array:list, order:Order=Order.ASC) ->  list:
 def heapify(array, n, i, order):
     """Process of converting a binary tree to a heap.
 
-    Recursive process of converting a a binary tree into a complete binary 
+    Recursive process of converting a binary tree into a complete binary 
     tree. A heap must be a complete binary tree. To preserve the heap-order 
-    property the value of each node must be greater or equal to it's children.
+    property the value of each node must be greater or equal to its children.
 
     Args:
         array (list) -- Elements to order.
